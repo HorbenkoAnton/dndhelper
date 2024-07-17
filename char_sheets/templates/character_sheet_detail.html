@@ -1,0 +1,51 @@
+<!-- character_sheet_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ character_sheet.name }}{% endblock %}
+
+{% block header %}{{ character_sheet.name }}{% endblock %}
+
+{% block content %}
+    <div class="character-sheet">
+        <div class="basic-info">
+            <p>Race: {{ character_sheet.get_race_display }}</p>
+            <p>Class: {{ character_sheet.get_class_type_display }}</p>
+            <p>Level: {{ character_sheet.level }}</p>
+        </div>
+        <div class="stats">
+            <h2>Stats</h2>
+            <p>Strength: {{ character_sheet.strength }} ({{ character_sheet.strength_b }})</p>
+            <p>Dexterity: {{ character_sheet.dexterity }} ({{ character_sheet.dexterity_b }})</p>
+            <p>Constitution: {{ character_sheet.constitution }} ({{ character_sheet.constitution_b }})</p>
+            <p>Intelligence: {{ character_sheet.intelligence }} ({{ character_sheet.intelligence_b }})</p>
+            <p>Wisdom: {{ character_sheet.wisdom }} ({{ character_sheet.wisdom_b }})</p>
+            <p>Charisma: {{ character_sheet.charisma }} ({{ character_sheet.charisma_b }})</p>
+        </div>
+        <div class="living-stats">
+            <h2>Living Stats</h2>
+            <p>Speed: {{ character_sheet.speed }}</p>
+            <p>Max HP: {{ character_sheet.max_hp }}</p>
+            <p>Current HP: {{ character_sheet.current_hp }}</p>
+            <p>Temporary HP: {{ character_sheet.temporary_hp }}</p>
+            <p>Armor Class: {{ character_sheet.armor_class }}</p>
+        </div>
+        <div class="proficiencies">
+            <h2>Proficiencies & Languages</h2>
+            <p>Armor: {{ character_sheet.get_armor_display }}</p>
+            <p>Weapon: {{ character_sheet.get_weapon_display }}</p>
+            <p>Languages: {{ character_sheet.languages }}</p>
+            <p>Tools: {{ character_sheet.get_tools_display }}</p>
+        </div>
+        <div class="background">
+            <h2>Background</h2>
+            <p>{{ character_sheet.background }}</p>
+            <p>{{ character_sheet.appearance }}</p>
+            <p>{{ character_sheet.philosophy }}</p>
+            <p>{{ character_sheet.life_goals }}</p>
+            <p>{{ character_sheet.strengths }}</p>
+            <p>{{ character_sheet.flaws }}</p>
+            <p>{{ character_sheet.bonds }}</p>
+            <p>{{ character_sheet.distinguishing_features }}</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Spells List{% endblock %}
+
+{% block content %}
+    <h2>Spells List</h2>
+    <hr />  
+    <a href="{% url 'spell-create' %}" class="btn btn-primary mb-3">Create New Spell</a>
+    <hr />
+        {% for spell in spells %}
+            </ul>
+            <li><b>{{ spell.name }}</b></li>
+            <li>{{ spell.level }}</li>
+            <li>{{ spell.description }}</li>
+            <ul>
+            <hr />
+            <!-- Add more fields as needed -->
+        {% empty %}
+            <li>No spells available</li>
+        {% endfor %}
+
+{% endblock %}

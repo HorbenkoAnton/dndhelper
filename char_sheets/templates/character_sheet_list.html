@@ -1,0 +1,16 @@
+<!-- character_sheet_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Character Sheets{% endblock %}
+
+{% block header %}Character Sheets{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for character_sheet in character_sheets %}
+            <li><a href="{% url 'character_sheet_detail' character_sheet.pk %}">{{ character_sheet.name }}</a></li>
+        {% empty %}
+            <li>No character sheets found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Spell - Django Character Sheets Manager{% endblock %}
+
+{% block content %}
+    <h2>Create Spell</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Spell</button>
+    </form>
+{% endblock %}
