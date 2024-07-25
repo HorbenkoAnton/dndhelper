@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth import authenticate, login, update_session_auth_hash,logout
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from .forms import RegisterForm
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+
 
 @login_required
 def user_profile(request):
@@ -32,3 +34,7 @@ def user_login(request):
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
+def user_logout(request):
+    logout(request)
+    return redirect(reverse_lazy('login'))

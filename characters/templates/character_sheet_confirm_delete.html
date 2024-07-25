@@ -1,0 +1,14 @@
+<!-- character_sheet_confirm_delete.html -->
+{% extends 'base.html' %}
+{% block title %}Confirm Delete Character Sheet{% endblock %}
+
+{% block content %}
+    <h2>Confirm Delete Character Sheet</h2>
+    <p>Are you sure you want to delete "{{ object.name }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'characters:character_sheet_detail' pk=object.pk %}">Cancel</a>
+    </form>
+{% endblock %}

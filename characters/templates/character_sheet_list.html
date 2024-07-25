@@ -1,0 +1,28 @@
+<!-- character_sheet_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Character Sheets{% endblock %}
+
+{% block content %}
+    <h2>Character Sheets</h2>
+    <ul>
+        {% for character_sheet in character_sheets %}
+            <li>
+                <h3>{{ character_sheet.basic_info.name }}</h3>
+                <p><strong>User:</strong> {{ character_sheet.basic_info.user }}</p>
+                <p><strong>Race:</strong> {{ character_sheet.basic_info.race }}</p>
+                <p><strong>Class:</strong> {{ character_sheet.basic_info.class_type }}</p>
+                <p><strong>Level:</strong> {{ character_sheet.basic_info.level }}</p>
+                
+                <a href="{% url 'characters:character_sheet_update' pk=character_sheet.pk %}">Edit</a>
+                <a href="{% url 'characters:character_sheet_detail' pk=character_sheet.pk %}">Details</a>
+                <form method="post" action="{% url 'characters:character_sheet_delete' pk=character_sheet.pk %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'characters:character_sheet_create' %}">Create New Character Sheet</a>
+{% endblock %}

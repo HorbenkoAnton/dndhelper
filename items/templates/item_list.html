@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}List of Items{% endblock %}
+
+{% block content %}
+    {% if items %}
+        <ul>
+            {% for item in items %}
+                <li>
+                    <h3>{{ item.name }}</h3>
+                    <p><strong>Description:</strong> {{ item.description }}</p>
+                    <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+                    <p><strong>Rarity:</strong> {{ item.get_rarity_display }}</p>
+                    
+                    <a href="{% url 'items:item_update' pk=item.pk %}">Update</a>
+                    
+                    <form method="post" action="{% url 'items:item_delete' pk=item.pk %}">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items available.</p>
+    {% endif %}
+    <a href="{% url 'items:item_create' %}" class="btn btn-primary">Create New Item</a>
+{% endblock %}

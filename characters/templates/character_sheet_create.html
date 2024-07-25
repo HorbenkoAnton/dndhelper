@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Create Character Sheet{% endblock %}
+
+{% block content %}
+    <h2>Create Character Sheet</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Basic Info Section -->
+        <fieldset>
+            <legend>Basic Information</legend>
+            {{ basic_info_form.as_p }}
+        </fieldset>
+        
+        <!-- Stats Section -->
+        <fieldset>
+            <legend>Stats</legend>
+            {{ stats_form.as_p }}
+        </fieldset>
+        
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'login_app',
-    'char_sheets',
+    'characters',
+    'items',
+    'spells',
 ]
 
 MIDDLEWARE = [

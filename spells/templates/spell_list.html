@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}List of Spells{% endblock %}
+
+{% block content %}
+    {% if spells %}
+        <ul>
+            {% for spell in spells %}
+                <li>
+                    <h3>{{ spell.name }}</h3>
+                    <p><strong>Description:</strong> {{ spell.description }}</p>
+                    <p><strong>Level:</strong> {{ spell.level }}</p>
+                    
+                    <a href="{% url 'spells:spell_update' pk=spell.pk %}">Update</a>
+                    
+                    <form method="post" action="{% url 'spells:spell_delete' pk=spell.pk %}">
+                        {% csrf_token %}
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No spells available.</p>
+    {% endif %}
+    <a href="{% url 'spells:spell_create' %}" class="btn btn-primary">Create New Spell</a>
+{% endblock %}

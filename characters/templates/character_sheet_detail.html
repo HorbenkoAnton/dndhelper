@@ -1,0 +1,23 @@
+<!-- character_sheet_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Character Sheet Details{% endblock %}
+
+{% block content %}
+    <h2>Character Sheet Details</h2>
+    
+    <!-- Display Basic Info -->
+    <h3>Basic Information</h3>
+    <p><strong>Name:</strong> {{ character_sheet.basic_info.name }}</p>
+    <p><strong>Race:</strong> {{ character_sheet.basic_info.race }}</p>
+    <p><strong>Class Type:</strong> {{ character_sheet.basic_info.class_type }}</p>
+    <p><strong>Level:</strong> {{ character_sheet.basic_info.level }}</p>
+    
+    <!-- Display other fields -->
+    <!-- Add other fields from CharacterSheet model if needed -->
+    
+    <!-- Add buttons for other actions -->
+    <a href="{% url 'characters:character_sheet_update' pk=character_sheet.pk %}">Edit</a>
+    <a href="{% url 'characters:character_sheet_delete' pk=character_sheet.pk %}">Delete</a>
+    <a href="{% url 'characters:character_sheet_list' %}">Back to List</a>
+{% endblock %}
